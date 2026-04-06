@@ -24,8 +24,8 @@ MonoBehaviour:
     m_path: Assets/Scenes/SampleScene.unity
     m_guid: 8c9cfa26abfee488c85f1582747f6a02
   - m_enabled: 1
-    m_path: Assets/Scenes/Level2.unity
-    m_guid: 65f9a6aed8878a44cbb58bd6e8294053
+    m_path: Assets/Scenes/SampleScene 1.unity
+    m_guid: f7efc52b671c40245b90eec24f0a2c8f
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
