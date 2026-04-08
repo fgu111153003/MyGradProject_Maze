@@ -13,6 +13,11 @@ public sealed class PlayerController : MonoBehaviour
 
     [Header("UI 設定")]
     public Text keyText; // 把你的 Text 物件拖到這個欄位
+    public Text timerText; // <--- 新增：用來顯示時間的 Text
+
+    [Header("計時設定")]
+    public float timeRemaining = 180f; // 設定這關有幾秒
+    private bool isGameOver = false;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -33,9 +38,48 @@ public sealed class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (isGameOver) return; // 如果遊戲結束，主角就不能動了
+
+        // --- 新增：倒數計時邏輯 ---
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime; // 每一幀扣除時間
+            UpdateTimerUI();
+        }
+        else
+        {
+            timeRemaining = 0;
+            GameOver(); // 時間到，遊戲結束
+        }
+        
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput = moveInput.normalized;
+    }
+
+// 更新計時器文字
+    void UpdateTimerUI()
+    {
+        if (timerText != null)
+        {
+            // 將秒數轉成整數顯示
+            timerText.text = "Time: " + Mathf.CeilToInt(timeRemaining).ToString() + "s";
+            
+            // 剩下的時間不到 10 秒時，讓文字閃爍或變色
+            if (timeRemaining < 30f)
+            {
+                timerText.color = Color.red;
+                timerText.transform.localScale = Vector3.one * (1 + Mathf.PingPong(Time.time * 2, 0.2f));
+            }
+        }
+    }
+
+    void GameOver()
+    {
+        isGameOver = true;
+        Debug.Log("時間到！挑戰失敗");
+        // 這邊可以直接重啟關卡，或是跳到失敗畫面
+        Invoke("RestartLevel", 2f); // 2秒後重啟
     }
 
     void FixedUpdate()
