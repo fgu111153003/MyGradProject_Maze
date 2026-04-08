@@ -1,20 +1,36 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // <--- 必須加這行，才能切換場景
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; // <--- 加入這一行才能控制 UI
 
 public sealed class PlayerController : MonoBehaviour
 {
+    [Header("玩家設定")]
     public float moveSpeed = 5f;
+    
+    [Header("遊戲進度")]
+    public int keysCollected = 0;    // 當前收集到的鑰匙數量
+    public int keysRequired = 2;     // 開門需要的總數 (可以在 Inspector 調整)
+
+    [Header("UI 設定")]
+    public Text keyText; // 把你的 Text 物件拖到這個欄位
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
-
-    // 新增：有沒有拿到鑰匙的狀態
-    public bool hasKey = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        UpdateKeyUI(); // 遊戲開始時先更新一次
     }
 
+    // 建立一個更新 UI 的小工具
+    void UpdateKeyUI()
+    {
+        if (keyText != null)
+        {
+            keyText.text = "Keys: " + keysCollected + " / " + keysRequired;
+        }
+    }
     void Update()
     {
         moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -27,60 +43,58 @@ public sealed class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
 
-    // 新增：處理碰撞事件
+    // 處理 Trigger 碰撞 (鑰匙、終點、陷阱)
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 如果撞到的是標籤為 "Key" 的物件
+        // 1. 撿鑰匙邏輯
         if (other.CompareTag("Key"))
         {
-            hasKey = true; 
-            Debug.Log("拿到鑰匙了！");
-            Destroy(other.gameObject); // 讓鑰匙在畫面上消失
+            keysCollected++; 
+            UpdateKeyUI(); // 撿到鑰匙時更新 UI
+            Destroy(other.gameObject); 
         }
 
-        // 撿鑰匙的邏輯
-        if (other.CompareTag("Key"))
-        {
-            hasKey = true; 
-            Destroy(other.gameObject);
-        }
-
-        // --- 新增：過關邏輯 ---
+        // 2. 抵達終點邏輯
         if (other.CompareTag("Goal"))
         {
-            Debug.Log("抵達終點！");
+            Debug.Log("抵達終點！跳轉下一關");
             LoadNextLevel();
         }
 
-        // --- 新增：碰到陷阱重來 ---
+        // 3. 踩到陷阱邏輯
         if (other.CompareTag("Trap"))
         {
-            Debug.Log("踩到陷阱！重啟本關...");
             RestartLevel();
         }
     }
 
+    // 處理實體碰撞 (門)
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 如果撞到的是標籤為 "Door" 的物件，且手上有鑰匙
-        if (collision.gameObject.CompareTag("Door") && hasKey)
+        if (collision.gameObject.CompareTag("Door"))
         {
-            Debug.Log("門開了！");
-            Destroy(collision.gameObject); // 讓門消失
+            if (keysCollected >= keysRequired)
+            {
+                Debug.Log("鑰匙足夠，開門成功！");
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                int need = keysRequired - keysCollected;
+                Debug.Log("鑰匙不夠！還差 " + need + " 把才能開門。");
+            }
         }
     }
 
     void LoadNextLevel()
     {
-        // 取得當前場景的編號，並載入下一個 (例如 0 號載入 1 號)
+        // 記得在 Build Settings 裡放好場景，或是改用 SceneManager.LoadScene("場景名");
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
     void RestartLevel()
     {
-        // 取得當前「這一關」的名字並重新載入
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
