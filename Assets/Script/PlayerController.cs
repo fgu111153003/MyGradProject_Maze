@@ -6,7 +6,7 @@ public sealed class PlayerController : MonoBehaviour
 {
     [Header("玩家設定")]
     public float moveSpeed = 5f;
-    
+
     [Header("遊戲進度")]
     public int keysCollected = 0;    // 當前收集到的鑰匙數量
     public int keysRequired = 2;     // 開門需要的總數 (可以在 Inspector 調整)
@@ -51,20 +51,20 @@ public sealed class PlayerController : MonoBehaviour
             timeRemaining = 0;
             GameOver(); // 時間到，遊戲結束
         }
-        
+
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput = moveInput.normalized;
     }
 
-// 更新計時器文字
+    // 更新計時器文字
     void UpdateTimerUI()
     {
         if (timerText != null)
         {
             // 將秒數轉成整數顯示
             timerText.text = "Time: " + Mathf.CeilToInt(timeRemaining).ToString() + "s";
-            
+
             // 剩下的時間不到 10 秒時，讓文字閃爍或變色
             if (timeRemaining < 30f)
             {
@@ -93,9 +93,9 @@ public sealed class PlayerController : MonoBehaviour
         // 1. 撿鑰匙邏輯
         if (other.CompareTag("Key"))
         {
-            keysCollected++; 
+            keysCollected++;
             UpdateKeyUI(); // 撿到鑰匙時更新 UI
-            Destroy(other.gameObject); 
+            Destroy(other.gameObject);
         }
 
         // 2. 抵達終點邏輯
