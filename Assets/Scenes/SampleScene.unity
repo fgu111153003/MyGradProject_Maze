@@ -4818,10 +4818,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc42947632933a142a49dcf566476762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 5
+  moveSpeed: 8
   keysCollected: 0
   keysRequired: 1
   keyText: {fileID: 845056600}
+  timerText: {fileID: 0}
+  timeRemaining: 180
 --- !u!1 &519210323
 GameObject:
   m_ObjectHideFlags: 0

@@ -14248,7 +14248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc42947632933a142a49dcf566476762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 5
+  moveSpeed: 10
   keysCollected: 0
   keysRequired: 3
   keyText: {fileID: 954852151}
