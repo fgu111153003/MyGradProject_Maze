@@ -8088,7 +8088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 10
   keysCollected: 0
-  keysRequired: 5
+  keysRequired: 3
   keyText: {fileID: 954852151}
   timerText: {fileID: 880299957}
   timeRemaining: 300
@@ -8582,7 +8582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964388228313192659, guid: ba6529d47c2458b4bad42358f83d9aff, type: 3}
       propertyPath: m_Text
-      value: "\u672C\u95DC\u9700\u8981\u7372\u5F97\u4E94\u628A\u9470\u5319\uFF0C\u5373\u53EF\u9032\u5165\u4E0B\u4E00\u95DC~~~"
+      value: "\u672C\u95DC\u9700\u8981\u7372\u5F97\u4E09\u628A\u9470\u5319\uFF0C\u5373\u53EF\u9032\u5165\u4E0B\u4E00\u95DC~~~"
       objectReference: {fileID: 0}
     - target: {fileID: 7129099727686073339, guid: ba6529d47c2458b4bad42358f83d9aff, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
