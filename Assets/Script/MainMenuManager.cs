@@ -1,49 +1,74 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // 使用舊版 UI 文字與按鈕必備
 
 public class MainMenuManager : MonoBehaviour
 {
-    [Header("UI 面板切換")]
-    public GameObject mainMenuPanel;
-    public GameObject infoPanel;
-    public GameObject creditsPanel;
+    [Header("【第一層】主面板切換")]
+    public GameObject mainMenuPanel;    
+    public GameObject infoPanel;        
+
+    [Header("【第二層】Info 底下的子分頁")]
+    public GameObject collectionSubPanel; 
+    public GameObject mechanicsSubPanel;  
 
     void Start()
     {
-        // 遊戲一開始，確保只顯示主選單，其他藏起來
         ShowMainMenu();
     }
 
-    // 1. 開始遊戲按鈕（直接進入你的任務簡報或第一關）
     public void PlayGame()
     {
-        // 恢復時間縮放（預防萬一）
-        Time.timeScale = 1f;
-        // 載入第一關，或者是你之前做的「方案一簡報場景」
+        Time.timeScale = 1f; 
         SceneManager.LoadScene("Level_1"); 
     }
 
-    // 2. 顯示主選單
+    // ==========================================
+    // 核心邏輯：控制大門的開關
+    // ==========================================
+
+    // 點擊「返回主選單」按鈕呼叫這個（完全退出說明）
     public void ShowMainMenu()
     {
         mainMenuPanel.SetActive(true);
         infoPanel.SetActive(false);
-        creditsPanel.SetActive(false);
     }
 
-    // 3. 顯示物件與遊戲說明
+    // 點擊主選單的「遊戲說明」呼召這個
     public void ShowInfo()
     {
         mainMenuPanel.SetActive(false);
         infoPanel.SetActive(true);
-        creditsPanel.SetActive(false);
+
+        // 預設狀態：一進來時，兩個子分頁都先不打開，讓玩家看到清晰的選擇畫面
+        // 或者你也可以維持原本的 OpenCollectionTab()，看你的視覺設計
+        BackToInfoMain(); 
     }
 
-    // 4. 顯示製作人員與學校Logo
-    public void ShowCredits()
+    // ==========================================
+    // 新增邏輯：控制子分頁的切換與退回
+    // ==========================================
+
+    // 點擊「收藏品」標籤按鈕時呼叫
+    public void OpenCollectionTab()
     {
-        mainMenuPanel.SetActive(false);
-        infoPanel.SetActive(false);
-        creditsPanel.SetActive(true);
+        collectionSubPanel.SetActive(true);
+        mechanicsSubPanel.SetActive(false);
+    }
+
+    // 點擊「冒險與機制」標籤按鈕時呼叫
+    public void OpenMechanicsTab()
+    {
+        collectionSubPanel.SetActive(false);
+        mechanicsSubPanel.SetActive(true);
+    }
+
+    // 【全新功能】點擊子分頁裡的「返回」按鈕時呼叫
+    // 功能：不關閉 Info 總面板，只把裡面的子分頁藏起來，退回選單層
+    public void BackToInfoMain()
+    {
+        collectionSubPanel.SetActive(false);
+        mechanicsSubPanel.SetActive(false);
+        Debug.Log("↩️ 已退回說明主層");
     }
 }
