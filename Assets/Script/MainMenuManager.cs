@@ -6,11 +6,18 @@ public class MainMenuManager : MonoBehaviour
 {
     [Header("【第一層】主面板切換")]
     public GameObject mainMenuPanel;    
-    public GameObject infoPanel;        
+    public GameObject infoPanel;
+    public GameObject creditsPanel;        
+    
+    [Header("【第二層】致謝分頁控制")]
+    public GameObject staffSubPanel;    // 人員與致謝分頁 (Page 1)
+    public GameObject sourceSubPanel;   // 來源與版權分頁 (Page 2)
 
-    [Header("【第二層】Info 底下的子分頁")]
+    [Header("Info 底下的子分頁")]
     public GameObject collectionSubPanel; 
-    public GameObject mechanicsSubPanel;  
+    public GameObject mechanicsSubPanel;
+    public GameObject infoMainButtons;  // 新增：專門控制「收藏品」與「冒險與機制」這兩個大按鈕的顯示
+    public GameObject backToMenuButton;  // 全新新增：專門控制「返回主選單」這個按鈕的顯示  
 
     void Start()
     {
@@ -34,6 +41,43 @@ public class MainMenuManager : MonoBehaviour
         infoPanel.SetActive(false);
     }
 
+    // ==========================================
+    // 1. 進入與離開致謝總介面
+    // ==========================================
+
+    // 點擊主畫面的「製作人員」按鈕呼叫
+    public void ShowCredits()
+    {
+        mainMenuPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+        OpenStaffPage(); // 預設打開第一頁：人員
+    }
+
+    // 在任何一頁點擊「返回主畫面」時呼叫
+    public void HideCredits()
+    {
+        mainMenuPanel.SetActive(true);
+        creditsPanel.SetActive(false);
+    }
+
+    // ==========================================
+    // 2. 致謝內部的分頁切換 (Page 1 <-> Page 2)
+    // ==========================================
+
+    // 點擊「下一頁」或由 ShowCredits 呼叫
+    public void OpenStaffPage()
+    {
+        staffSubPanel.SetActive(true);
+        sourceSubPanel.SetActive(false);
+    }
+
+    // 在第一頁點擊「查看來源 / 下一頁」時呼叫
+    public void OpenSourcePage()
+    {
+        staffSubPanel.SetActive(false);
+        sourceSubPanel.SetActive(true);
+    }
+
     // 點擊主選單的「遊戲說明」呼召這個
     public void ShowInfo()
     {
@@ -52,6 +96,8 @@ public class MainMenuManager : MonoBehaviour
     // 點擊「收藏品」標籤按鈕時呼叫
     public void OpenCollectionTab()
     {
+        infoMainButtons.SetActive(false);    // 隱藏主介面的大按鈕！
+        backToMenuButton.SetActive(false);   // 隱藏「返回主選單」按鈕！
         collectionSubPanel.SetActive(true);
         mechanicsSubPanel.SetActive(false);
     }
@@ -59,6 +105,8 @@ public class MainMenuManager : MonoBehaviour
     // 點擊「冒險與機制」標籤按鈕時呼叫
     public void OpenMechanicsTab()
     {
+        infoMainButtons.SetActive(false);    // 隱藏主介面的大按鈕！
+        backToMenuButton.SetActive(false);   // 隱藏「返回主選單」按鈕！
         collectionSubPanel.SetActive(false);
         mechanicsSubPanel.SetActive(true);
     }
@@ -67,8 +115,10 @@ public class MainMenuManager : MonoBehaviour
     // 功能：不關閉 Info 總面板，只把裡面的子分頁藏起來，退回選單層
     public void BackToInfoMain()
     {
+        infoMainButtons.SetActive(true);     // ↩️ 讓大按鈕重新顯示出來！
+        backToMenuButton.SetActive(true);    // ↩️ 讓「返回主選單」按鈕重新顯示出來！
         collectionSubPanel.SetActive(false);
         mechanicsSubPanel.SetActive(false);
-        Debug.Log("↩️ 已退回說明主層");
+        Debug.Log("↩️ 已退回說明主層，所有主選單按鈕已恢復");
     }
 }
