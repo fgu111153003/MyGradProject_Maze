@@ -18,6 +18,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject mechanicsSubPanel;
     public GameObject infoMainButtons;  // 新增：專門控制「收藏品」與「冒險與機制」這兩個大按鈕的顯示
     public GameObject backToMenuButton;  // 全新新增：專門控制「返回主選單」這個按鈕的顯示  
+    public GameObject infoMainText;  // 新增說明圖示與文字
 
     void Start()
     {
@@ -97,6 +98,7 @@ public class MainMenuManager : MonoBehaviour
     public void OpenCollectionTab()
     {
         infoMainButtons.SetActive(false);    // 隱藏主介面的大按鈕！
+        infoMainText.SetActive(false);       // 隱藏說明文字
         backToMenuButton.SetActive(false);   // 隱藏「返回主選單」按鈕！
         collectionSubPanel.SetActive(true);
         mechanicsSubPanel.SetActive(false);
@@ -106,6 +108,7 @@ public class MainMenuManager : MonoBehaviour
     public void OpenMechanicsTab()
     {
         infoMainButtons.SetActive(false);    // 隱藏主介面的大按鈕！
+        infoMainText.SetActive(false);       // 隱藏說明文字
         backToMenuButton.SetActive(false);   // 隱藏「返回主選單」按鈕！
         collectionSubPanel.SetActive(false);
         mechanicsSubPanel.SetActive(true);
@@ -116,6 +119,7 @@ public class MainMenuManager : MonoBehaviour
     public void BackToInfoMain()
     {
         infoMainButtons.SetActive(true);     // ↩️ 讓大按鈕重新顯示出來！
+        infoMainText.SetActive(true);        // ↩️ 讓說明文字重新顯示出來！
         backToMenuButton.SetActive(true);    // ↩️ 讓「返回主選單」按鈕重新顯示出來！
         collectionSubPanel.SetActive(false);
         mechanicsSubPanel.SetActive(false);
