@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; // <--- 加入這一行才能控制 UI
@@ -22,6 +23,12 @@ public sealed class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
+    [Header("--- 移動音效設定 ---")]
+    public AudioSource moveSfxSource;   // 專門播移動音效的播放器
+    public AudioClip moveSound;         // 移動時的短音效 (.wav)
+    public float stepInterval = 0.3f;   // 音效連續發出的間隔時間 (秒)，數值越小節奏越快
+    private float stepTimer;            // 計時器內部計算用
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,23 +45,46 @@ public sealed class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        if (isGameOver) return; // 如果遊戲結束，主角就不能動了
+        // 這兩行負責抓取鍵盤的 WASD 或 方向鍵，並存進 moveInput 裡
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        moveInput = new Vector2(moveX, moveY).normalized;
 
-        // --- 新增：倒數計時邏輯 ---
+        // 🔍 偵測玩家目前有沒有在按按鍵移動
+        bool isMoving = moveInput.x != 0 || moveInput.y != 0;
+
+        if (isMoving)
+        {
+            // 計時器累積時間
+            stepTimer += Time.deltaTime;
+
+            // 時間到了就播一次音效
+            if (stepTimer >= stepInterval)
+            {
+                // 確保你有在變數宣告區加上：public AudioSource moveSfxSource; 和 public AudioClip moveSound;
+                if (moveSfxSource != null && moveSound != null)
+                {
+                    moveSfxSource.PlayOneShot(moveSound, 0.3f);
+                }
+                stepTimer = 0f;
+            }
+        }
+        else
+        {
+            // 停下時重置計時器，確保下次起步立刻發聲
+            stepTimer = stepInterval;
+        }
+
         if (timeRemaining > 0)
         {
-            timeRemaining -= Time.deltaTime; // 每一幀扣除時間
-            UpdateTimerUI();
+            timeRemaining -= Time.deltaTime; // 👈 每一幀都扣除現實世界經過的時間
         }
         else
         {
             timeRemaining = 0;
-            GameOver(); // 時間到，遊戲結束
+            // 這裡可以放時間到的邏輯，例如：玩家死亡、Game Over 或是重新開始關卡
         }
-
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
-        moveInput = moveInput.normalized;
+        UpdateTimerUI(); // 👈 呼叫你寫好的計時器更新與閃爍特效！
     }
 
     // 更新計時器文字
