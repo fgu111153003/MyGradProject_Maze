@@ -6372,7 +6372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 125}
+  m_AnchoredPosition: {x: -62, y: 150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1428887470
@@ -6471,7 +6471,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u97F3\u6A02\u4F86\u6E90\uFF1A"
+  m_Text: "\u97F3\u6A02\u4F86\u6E90\uFF1ASignal\u7DE8\u8B6F\u5668"
 --- !u!222 &1445547916
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7689,7 +7689,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u97F3\u6548\u4F86\u6E90\uFF1A"
+  m_Text: "\u97F3\u6548\u4F86\u6E90\uFF1ASignal\u7DE8\u8B6F\u5668"
 --- !u!222 &1644176620
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8229,7 +8229,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7F8E\u8853\u4F86\u6E90\uFF1A"
+  m_Text: "\u7F8E\u8853\u4F86\u6E90\uFF1AGoogle Gemini\u751F\u6210\u3001Unity Asset
+    Store-Pixel Adventure 1"
 --- !u!222 &1856712969
 CanvasRenderer:
   m_ObjectHideFlags: 0
