@@ -7,7 +7,17 @@ public class PauseManager : MonoBehaviour
     [Tooltip("請把 Canvas 底下的 PausePanel 拖進來")]
     public GameObject pausePanel;
 
+    [Header("相機設定")]
+    public Camera mapCamera;           // 拖入你的 Map_Camera
+
     private bool isPaused = false;
+
+    void Start()
+    {
+        // 遊戲開始時，確保暫停面板與地圖相機都是關閉的
+        if (pausePanel != null) pausePanel.SetActive(false);
+        if (mapCamera != null) mapCamera.enabled = false;
+    }
 
     void Update()
     {
@@ -29,13 +39,10 @@ public class PauseManager : MonoBehaviour
     public void PauseGame()
     {
         isPaused = true;
-        if (pausePanel != null) pausePanel.SetActive(true); // 顯示暫停畫面
+        Time.timeScale = 0f;            // 暫停遊戲時間（角色停止移動）
         
-        // 【核心】將遊戲時間縮放設為 0
-        // 這會讓 PlayerController 裡的 Update 停止跑倒數計時，幽靈也會動彈不得！
-        Time.timeScale = 0f; 
-        
-        Debug.Log("⏸️ 遊戲暫停，時間倒數已停止");
+        if (pausePanel != null) pausePanel.SetActive(true);   // 顯示暫停地圖 UI
+        if (mapCamera != null) mapCamera.enabled = true;      // 啟用相機渲染地圖
     }
 
     // 2. 繼續遊戲
