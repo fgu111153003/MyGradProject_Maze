@@ -82,6 +82,7 @@ public sealed class PlayerController : MonoBehaviour
         else
         {
             timeRemaining = 0;
+            GameOver();
             // 這裡可以放時間到的邏輯，例如：玩家死亡、Game Over 或是重新開始關卡
         }
         UpdateTimerUI(); // 👈 呼叫你寫好的計時器更新與閃爍特效！
