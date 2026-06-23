@@ -21748,6 +21748,7 @@ MonoBehaviour:
   moveSfxSource: {fileID: 501576197}
   moveSound: {fileID: 8300000, guid: e5c9c916c73474046b2f5a9cea811c00, type: 3}
   stepInterval: 0.3
+  endingManager: {fileID: 0}
 --- !u!82 &501576197
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24176,7 +24177,7 @@ GameObject:
   - component: {fileID: 1987512712}
   m_Layer: 0
   m_Name: Goal
-  m_TagString: Goal
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

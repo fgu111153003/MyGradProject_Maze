@@ -141,6 +141,16 @@ public sealed class PlayerController : MonoBehaviour
         {
             RestartLevel();
         }
+
+        // 檢查是不是踩到第 7 關終點
+        if (other.CompareTag("Finish"))
+        {
+            // 確保時間流速正常，才能順利載入新場景
+            UnityEngine.Time.timeScale = 1f;
+
+            // 直接載入你的新結局場景（請確保名稱與你新創的 Scene 一模一樣）
+            UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene");
+        }
     }
 
     // 處理實體碰撞 (門)
