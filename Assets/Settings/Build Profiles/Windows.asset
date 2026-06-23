@@ -45,8 +45,8 @@ MonoBehaviour:
     m_path: Assets/Scenes/Level_7.unity
     m_guid: b3a95ade0cedde047bc9680fd23e0db0
   - m_enabled: 1
-    m_path: Assets/Scenes/Ending.unity
-    m_guid: 6900c3251bf95e941a4d78b5301da317
+    m_path: Assets/Scenes/GameClearScene.unity
+    m_guid: 0a793a5b6accdd64a80ec333a3b0ae30
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:

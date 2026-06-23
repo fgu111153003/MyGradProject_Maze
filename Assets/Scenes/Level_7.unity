@@ -288,10 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80bcd05d54784a247b11d28d6aaad23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackHole
-  teleportPoints:
-  - {fileID: 1189170113}
-  rotateSpeed: -200
-  scalePulseSpeed: 3
+  respawnPoint: {fileID: 1189170113}
 --- !u!212 &102184871
 SpriteRenderer:
   serializedVersion: 2
@@ -396,7 +393,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -581,10 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80bcd05d54784a247b11d28d6aaad23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackHole
-  teleportPoints:
-  - {fileID: 1189170113}
-  rotateSpeed: -200
-  scalePulseSpeed: 3
+  respawnPoint: {fileID: 1189170113}
 --- !u!212 &217372575
 SpriteRenderer:
   serializedVersion: 2
@@ -689,7 +683,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -21748,7 +21742,6 @@ MonoBehaviour:
   moveSfxSource: {fileID: 501576197}
   moveSound: {fileID: 8300000, guid: e5c9c916c73474046b2f5a9cea811c00, type: 3}
   stepInterval: 0.3
-  endingManager: {fileID: 0}
 --- !u!82 &501576197
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22692,10 +22685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80bcd05d54784a247b11d28d6aaad23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackHole
-  teleportPoints:
-  - {fileID: 1189170113}
-  rotateSpeed: -200
-  scalePulseSpeed: 3
+  respawnPoint: {fileID: 1189170113}
 --- !u!212 &1109061665
 SpriteRenderer:
   serializedVersion: 2
@@ -22800,7 +22790,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -23482,10 +23472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80bcd05d54784a247b11d28d6aaad23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackHole
-  teleportPoints:
-  - {fileID: 1849375835}
-  rotateSpeed: -200
-  scalePulseSpeed: 2
+  respawnPoint: {fileID: 1849375835}
 --- !u!61 &1559294456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23516,7 +23503,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

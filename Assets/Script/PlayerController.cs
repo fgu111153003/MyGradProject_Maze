@@ -149,7 +149,7 @@ public sealed class PlayerController : MonoBehaviour
             UnityEngine.Time.timeScale = 1f;
 
             // 直接載入你的新結局場景（請確保名稱與你新創的 Scene 一模一樣）
-            UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameClearScene");
         }
     }
 
@@ -173,9 +173,24 @@ public sealed class PlayerController : MonoBehaviour
 
     void LoadNextLevel()
     {
-        // 記得在 Build Settings 裡放好場景，或是改用 SceneManager.LoadScene("場景名");
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        // 1. 取得當前場景的編號
+        int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+
+        // 2. 取得當前場景的名字
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+        // 3. 判斷是不是第七關 (可以用編號判斷，也可以用場景名字判斷，用名字最安全！)
+        // 提示：引號內請改成你第 7 關在 Unity 裡的精確名稱，例如 "Level7" 或 "Stage7"
+        if (currentSceneName == "Level_7")
+        {
+            // 如果是第七關，就直接載入全部通關的結局場景
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameClearScene");
+        }
+        else
+        {
+            // 如果不是最後一關，就正常載入下一關 (編號 + 1)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex + 1);
+        }
     }
 
     void RestartLevel()
