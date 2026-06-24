@@ -11,6 +11,6 @@ public class EndingManagers : MonoBehaviour
         
         // 直接載入主畫面場景
         // 提示：請確保引號內的文字 "MainMenuScene" 與你主畫面場景的精確名稱一模一樣（包含大小寫）
-        SceneManager.LoadScene("MainMenuScene"); 
+        SceneManager.LoadScene(0); 
     }
 }

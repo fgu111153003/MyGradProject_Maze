@@ -149,7 +149,7 @@ public sealed class PlayerController : MonoBehaviour
             UnityEngine.Time.timeScale = 1f;
 
             // 直接載入你的新結局場景（請確保名稱與你新創的 Scene 一模一樣）
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameClearScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(8);
         }
     }
 
