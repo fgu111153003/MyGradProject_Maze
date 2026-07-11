@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -61, y: -142}
-  m_SizeDelta: {x: 1600, y: 800}
+  m_AnchoredPosition: {x: -49, y: -114}
+  m_SizeDelta: {x: 1200, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &192900463
 MonoBehaviour:
@@ -410,7 +410,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: 289}
+  m_AnchoredPosition: {x: 2, y: 225}
   m_SizeDelta: {x: 1500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981007582
@@ -446,7 +446,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u606D\u559C\u5168\u90E8\u901A\u95DC\uFF0C\u6536\u96C6\u7684\u90E8\u4EF6\u5DF2\u7D44\u6210\u70BA\u5B8C\u6574\u7684\u7235\u58EB\u9F13\u7D44\u4E86\uFF0C\n\u53EF\u4EE5\u9078\u64C7\u8FD4\u56DE\u4E3B\u9078\u55AE\u6216\u662F\u7D50\u675F\u904A\u6232~~~"
+  m_Text: "\u606D\u559C\u5168\u90E8\u901A\u95DC\uFF0C\u6536\u96C6\u7684\u90E8\u4EF6\u5DF2\u7D44\u6210\u70BA\u5B8C\u6574\u7684\u7235\u58EB\u9F13\u7D44\u4E86\uFF0C\n\u53EF\u4EE5\u9078\u64C7\u8FD4\u56DE\u4E3B\u9078\u55AE\u6216\u662F\u7D50\u675F\u904A\u6232\uFF0C\u611F\u8B1D\u60A8\u7684\u904A\u73A9"
 --- !u!222 &981007583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 757, y: -383}
+  m_AnchoredPosition: {x: 484, y: -257}
   m_SizeDelta: {x: 230, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482291678
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23529412, g: 0.23529412, b: 0.23529412, a: 0.11764706}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -9363,6 +9363,18 @@ PrefabInstance:
       value: "\u672C\u95DC\u9700\u8981\u7372\u5F97\u5169\u500B\u91D1\u8272\u97F3\u7B26\uFF0C\u4E0D\u8981\u649E\u4E0A\u5371\u96AA\u7684\u7D05\u8272\u4F11\u6B62\u7B26"
       objectReference: {fileID: 0}
     - target: {fileID: 4964388228313192659, guid: ba6529d47c2458b4bad42358f83d9aff, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964388228313192659, guid: ba6529d47c2458b4bad42358f83d9aff, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964388228313192659, guid: ba6529d47c2458b4bad42358f83d9aff, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964388228313192659, guid: ba6529d47c2458b4bad42358f83d9aff, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: 3220310d77dcdb44d8bbf7505fa4fc6b, type: 3}
